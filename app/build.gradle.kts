@@ -8,7 +8,8 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id("org.springframework.boot") version "3.2.2"
-    application
+    id("io.spring.dependency-management") version "1.1.4"
+    id ("java")
 }
 
 repositories {
@@ -31,11 +32,6 @@ java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(11))
     }
-}
-
-application {
-    // Define the main class for the application.
-    mainClass.set("gradle.spring.App")
 }
 
 tasks.named<Test>("test") {
