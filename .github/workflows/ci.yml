@@ -1,0 +1,22 @@
+name: tests
+on:
+  pull_request:
+    types: [opened, reopened, review_requested, synchronize]
+  push:
+
+jobs:
+  gradle:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: 17
+    
+    - name: build
+      run: ./gradlew build
+
+    - name: test
+      run: ./gradlew test
